@@ -6,9 +6,8 @@ gem 'rails', '3.2.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Removed mysql2 and added ruby-mysql according to tutorial	
-#gem 'mysql2'
-gem 'ruby-mysql'
-
+gem 'mysql2'
+# gem 'ruby-mysql'
 
 # Gems used only for assets and not required
 # in production environments by default.
