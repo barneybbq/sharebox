@@ -108,4 +108,26 @@ Instead of running the modified ..._devise_create_user.rb file as specified by t
 
   STEP 4 Uploading files
 
+  After adding gem "paperclip", "~> 2.3" in gemfile had to run bundle install twice. After the first bundle install the following line was generated during output:
+     gemfile  mocha
+
+First tried to run rake db:migrate but got the following error:
+  Could not find gem 'mocha (>= 0) ruby' in the gems available on this machine.
+  Run `bundle install` to install missing gems.
+
+Ran bundle install again and the migrations worked.
+
+In the migration file add the following line:
+  add_index :assets, :user_id  
+As follows:
+  def self.up
+    create_table :assets do |t|
+      t.integer :user_id
+      t.timestamps
+    end
+    add_index :assets, :user_id
+  end
+
+  Flash messages are not working and Destroy action is not working. Decided to continue with S3 integrations first.
+  
   

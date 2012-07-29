@@ -28,8 +28,8 @@
     </div>  
 
     <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% flash.each do |key, value| %>
+        <div><%= value %></div>
       <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
