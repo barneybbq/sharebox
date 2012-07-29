@@ -44,3 +44,57 @@ Also changed the following lines:
   adapter: mysql2
   password: admin
 
+PART 2:
+
+After installing devise the following information is given for changes that need to be added manually:
+
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have defined default url options in your environments files. Here 
+     is an example of default_url_options appropriate for a development environment 
+     in config/environments/development.rb:
+
+       config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+     In production, :host should be set to the actual host of your application.
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root :to => "home#index"
+
+CAN BE SKIPPED! This is done by nifty generator in our case
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+IS SKIPPED FOR NOW
+  4. If you are deploying Rails 3.1 on Heroku, you may want to set:
+
+       config.assets.initialize_on_precompile = false
+
+     On config/application.rb forcing your application to not access the DB
+     or load models when precompiling your assets.
+
+===============================================================================
+The command for the following step is missing:
+	Now, let's create our first model, User, using "devise".
+Use this command:
+	rails generate devise User
+
+# Info found on https://github.com/plataformatec/devise#getting-started
+# General command: rails generate devise MODEL
+
+Instead of running the modified ..._devise_create_user.rb file as specified by the tutorial decided to run the migration file created by devise. Only added the following line just before t.timestamps:
+	t.string :name
+
+  Added the following lines in "app/views/devise/registrations/new.html.erb" (slightly different from the tutorial lines)
+    <div><%= f.label :name %><br />  
+  <%= f.text_field :name %></div>
+
+  STEP 3 Add Basic CSS
+    
