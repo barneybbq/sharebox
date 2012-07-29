@@ -96,5 +96,16 @@ Instead of running the modified ..._devise_create_user.rb file as specified by t
     <div><%= f.label :name %><br />  
   <%= f.text_field :name %></div>
 
+  users/sign_out/ didn't work replaced the following line in config/routes.rb
+    devise_for :users
+  replaced with:
+    devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
+
   STEP 3 Add Basic CSS
-    
+  
+  Added CSS information not in "public/stylesheets/application.css" but in newly created file:
+   app/assets/stylesheets/custom.css
+
+  STEP 4 Uploading files
+
+  
