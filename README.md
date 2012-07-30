@@ -130,4 +130,26 @@ As follows:
 
   Flash messages are not working and Destroy action is not working. Decided to continue with S3 integrations first.
   
+  STEP 5 Integrate Amazon S3
+
+  Installed gem 'aws-sdk', '~> 1.3.4' next to 'gem-aws' cause file uploading wasn't working. Not sure if the problem was with the gem, more likely the login information was causing problems. Decided to stick with the new gem cause it is also adviced by Paperclip
+
+  Modified the following line for the S3 credentials:
+    :s3_credentials => "#{Rails_ROOT}/config/amazon_s3.yml", 
+  Method #{Rails_ROOT} is deprecated used the following command instead:
+    :s3_credentials => ::Rails.root.join('config/amazon_s3.yml'),
+
+  Created the amazon_s3.yml with the correct information and added the file to .gitignore to prevent exposing information to other people
+
+  Received error message caused by the following line:
+      data = open(URI.parse(URI.encode(asset.uploaded_file.url)))  
+  Solved it by add the following in the top of the assets_controller.rb file:
+      require 'open-uri'
   
+ 
+
+
+
+
+
+

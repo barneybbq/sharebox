@@ -13,6 +13,13 @@ gem "nifty-generators", :group => :development
 #for uploading files  
 gem "paperclip", "~> 2.3"
 
+#for Paperclip to use Amazon S3  
+gem "aws-s3"
+gem 'aws-sdk', '~> 1.3.4'
+
+#Maybe for fixing an error
+#gem 'open-uri'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

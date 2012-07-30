@@ -3,10 +3,19 @@ class Asset < ActiveRecord::Base
 
   belongs_to :user 
 
-  #set up "uploaded_file" field as attached_file (using Paperclip)  
-  has_attached_file :uploaded_file,  
-               :url => "/assets/get/:id",  
-               :path => ":Rails_root/assets/:id/:basename.:extension" 
+#set up "uploaded_file" field as attached_file (using Paperclip)
+# Use the following information when uploading from a local machine
+# has_attached_file :uploaded_file,  
+#                :url => "/assets/get/:id",  
+#                :path => ":Rails_root/assets/:id/:basename.:extension"  
+
+#set up "uploaded_file" field as attached_file (using Paperclip)
+has_attached_file :uploaded_file,  
+              :path => "assets/:id/:basename.:extension",  
+              :storage => :s3,
+              # amazon_s3.yml is added to .gitignore, create you own file
+              :s3_credentials => ::Rails.root.join('config/amazon_s3.yml'), 
+              :bucket => "barneybbq-shareboxapp" 
 
   validates_attachment_size :uploaded_file, :less_than => 10.megabytes    
   validates_attachment_presence :uploaded_file 
