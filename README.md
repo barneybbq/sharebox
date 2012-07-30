@@ -145,6 +145,20 @@ As follows:
       data = open(URI.parse(URI.encode(asset.uploaded_file.url)))  
   Solved it by add the following in the top of the assets_controller.rb file:
       require 'open-uri'
+
+  Modified the login information for S3 in order to deploy to Heroku:
+  1) Modified /config/environment.rb, added:
+    # Load app vars from local file
+    s3_env = File.join(Rails.root, 'config', 's3.rb')
+    load(s3_env) if File.exists?(s3_env)
+
+  2) Created s3.rb (file found on http://http://icebergist.com/posts/paperclip-heroku-and-amazon-s3-credentials)
+
+  3) Added bucket name in /config/amazon_s3.yml
+
+  4) Modified asset.rb
+      :s3_credentials => S3_CREDENTIALS
+
   
  
 
