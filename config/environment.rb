@@ -7,3 +7,6 @@ load(s3_env) if File.exists?(s3_env)
 
 # Initialize the rails application
 Sharebox::Application.initialize!
+
+#Formatting DateTime to look like "20/01/2011 10:28PM"  
+Time::DATE_FORMATS[:default] = "%d/%m/%Y %l:%M%p"

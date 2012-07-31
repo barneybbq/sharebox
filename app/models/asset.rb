@@ -21,5 +21,9 @@ has_attached_file :uploaded_file,
 
   def file_name  
     uploaded_file_file_name 
-  end  
+  end
+
+  def file_size  
+    uploaded_file_file_size  
+  end 
 end
